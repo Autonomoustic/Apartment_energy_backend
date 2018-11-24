@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tariff: MyString
+  energy_consumption: MyString
+  bill_amount: MyString
+
+two:
+  tariff: MyString
+  energy_consumption: MyString
+  bill_amount: MyString

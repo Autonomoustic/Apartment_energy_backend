@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tariff: MyString
+  meter_reading: MyString
+  meter_img_url: MyString
+  bill_amount: MyString
+
+two:
+  tariff: MyString
+  meter_reading: MyString
+  meter_img_url: MyString
+  bill_amount: MyString
