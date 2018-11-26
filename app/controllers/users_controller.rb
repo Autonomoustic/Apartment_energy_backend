@@ -28,16 +28,16 @@ class UsersController < ApplicationController
   def sign_in
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
-      render json: {name: @user.name, email: @user.email, apartment_no: @user.apartment_no, building_id: @user.building_id}
+      render json: {name: user.name, token: issue_token({id: user.id})}
     else
       render json: {error: 'Invalid username or password'}, status: 400
     end
   end
 
   def validate
-    user = User.find_by(name: request.headers['Authorization'])
+    user = get_current_user
     if user
-      render json: {name: @user.name, email: @user.email, apartment_no: @user.apartment_no, building_id: @user.building_id}
+      render json: {name: user.name, token: issue_token({id: user.id})}
     else
       render json: {error: 'User not found.'}, status: 400
     end

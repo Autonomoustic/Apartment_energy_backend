@@ -1,16 +1,24 @@
 class ApplicationController < ActionController::Base
 
+  def issue_token(data)
+    JWT.encode(data, secret)
+  end
+
   def get_current_user
     id = decoded_token['id']
     User.find_by(id: id)
   end
 
-  def decode_token
+  def decoded_token
     token = request.headers['Authorization']
-    JWT.decode[token, secret][0]
+    begin
+      JWT.decode(token, secret)[0]
+    rescue JWT::DecodeError
+      {}
+    end
   end
- 
+
   def secret
-    'hello'
+    ENV['API_SECRET']
   end
 end
